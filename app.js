@@ -18,8 +18,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 var stockRoutes = require('./routes/stocks');
 var optionsRoutes = require('./routes/options');
 
-app.use('/stocks', stockRoutes);
-app.use('/options', optionsRoutes);
+var baseApiPath = '/api/';
+
+app.use(baseApiPath.concat('stocks'), stockRoutes);
+app.use(baseApiPath.concat('options'), optionsRoutes);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
